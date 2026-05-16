@@ -198,3 +198,16 @@ html, body {
     overflow-y: visible !important;
 }
 
+/* Bikin konten mulai dari atas biar teks judul gak kepotong ke atas */
+#main-content {
+    display: block !important;
+    padding-top: 20px !important;
+    padding-bottom: 40px !important;
+}
+
+.card {
+    margin: 0 auto !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+}
