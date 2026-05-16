@@ -177,3 +177,10 @@ body {
 }
 
 .falling-heart {
+/* --- TRICK PAMUNGKAS BIAR BISA LANGSUNG DI-SCROLL TANPA ZOOM --- */
+html, body {
+    height: auto !important;
+    min-height: 101vh !important; /* Dipaksa lebih tinggi 1% dari layar HP biar fitur scroll-nya langsung aktif otomatis */
+    overflow-y: scroll !important; /* Maksa bar scroll-nya hidup dari awal */
+    touch-action: pan-y !important; /* Mengizinkan sentuhan jari khusus buat scroll atas-bawah */
+}
