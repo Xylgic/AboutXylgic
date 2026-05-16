@@ -16,6 +16,7 @@ function createRainEffect() {
     // Tentukan secara acak apakah muncul Hati atau Bintang
     const isHeart = Math.random() > 0.5; 
     
+    // DIGANTI EMOTICON BERWARNA BIAR GAK JADI HITAM DI HP
     if (isHeart) {
         item.innerText = '♡';
         item.classList.add('falling-heart');
@@ -31,8 +32,8 @@ function createRainEffect() {
     const duration = Math.random() * 4 + 3;
     item.style.animationDuration = duration + "s";
     
-    // Ukuran teks acak (10px - 30px)
-    item.style.fontSize = Math.random() * 20 + 10 + "px";
+    // Ukuran teks acak (15px - 35px) biar kelihatan pas
+    item.style.fontSize = Math.random() * 20 + 15 + "px";
     
     // Transparansi acak agar terlihat lebih natural
     item.style.opacity = Math.random() * 0.8 + 0.2;
@@ -66,11 +67,12 @@ openBtn.addEventListener('click', function() {
  * 3. Event Listener saat Lope Denyut diklik
  */
 heartBtn.addEventListener('click', function() {
-    // Cek apakah foto sedang sembunyi atau tidak
-    if (photoArea.style.display === 'block') {
-        photoArea.style.display = 'none';
+    // MEMAKAI CLASSLIST BIAR FIX GAK MENTAL KE KIRI LAGI
+    if (photoArea.classList.contains('hidden-photo')) {
+        photoArea.classList.remove('hidden-photo');
+        photoArea.style.display = 'block'; // Memastikan tetap muncul di browser tertentu
     } else {
-        // Munculkan foto dengan animasi yang sudah ada di CSS
-        photoArea.style.display = 'block';
-            }
+        photoArea.classList.add('hidden-photo');
+        photoArea.style.display = 'none';
+    }
 });
