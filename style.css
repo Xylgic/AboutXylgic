@@ -186,3 +186,8 @@ text-shadow:0 0 5px white;}
     font-size: 1.2rem;
     animation: fall linear infinite;
 }
+/* Kode pemaksa biar HP mau nge-scroll ke bawah */
+html, body {
+    overflow-y: auto !important;
+    height: auto !important;
+}
