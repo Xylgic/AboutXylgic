@@ -1,18 +1,36 @@
-.ye {color:white; text-shadow:0 0 5px white; }
-.uwu{color:white;text-shadow: 0 0 5px pink}
+
+/* --- GAYA UTAMA & NAVIGASI HALAMAN --- */
+.ye {
+    color: white; 
+    text-shadow: 0 0 5px white; 
+}
+
+.uwu {
+    color: white;
+    text-shadow: 0 0 5px pink;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     font-family: 'Poppins', sans-serif;
     /* Latar bergerak dengan campuran neon pink */
     background: linear-gradient(-45deg, #ff00ff, #ff69b4, #4b0082, #000000);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
-    overflow: hidden;
+    
+    /* SETINGAN KHUSUS BIAR HP BISA SCROLL DAN GAK KEPOTONG */
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Konten mulai dari atas, gak bakal amblas */
+    padding: 30px 0; /* Jarak aman atas bawah layar HP */
+    box-sizing: border-box;
 }
 
 @keyframes gradientMove {
@@ -21,7 +39,15 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Tombol Awal ala Neon */
+/* --- TOMBOL AWAL NEON --- */
+#start-screen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
 #open-btn {
     padding: 15px 40px;
     font-size: 1.2rem;
@@ -41,6 +67,13 @@ body {
     box-shadow: 0 0 40px #ff00ff;
 }
 
+/* --- KOTAK KARTU UCAPAN --- */
+#main-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .card {
     background: rgba(0, 0, 0, 0.7); /* Background gelap transparan agar neon menonjol */
     padding: 30px;
@@ -48,8 +81,10 @@ body {
     text-align: center;
     border: 2px solid #ff00ff;
     box-shadow: 0 0 20px #ff00ff;
-    max-width: 90%;
+    width: 85%;
+    max-width: 450px;
     animation: fadeIn 1.5s;
+    margin-bottom: 20px;
 }
 
 .neon-text {
@@ -58,13 +93,14 @@ body {
     margin-top: 15px;
 }
 
-/* Animasi Lope Denyut */
+/* --- ANIMASI LOPE DENYUT --- */
 .heart {
     font-size: 60px;
     cursor: pointer;
     display: inline-block;
     animation: pulse 1s infinite;
     filter: drop-shadow(0 0 10px #ff1493);
+    margin: 15px 0;
 }
 
 @keyframes pulse {
@@ -72,64 +108,7 @@ body {
     50% { transform: scale(1.3); }
 }
 
-/* Area Foto */
-.hidden-photo {
-    display: none;
-    margin-top: 20px;
-    animation: scaleUp 0.8s ease-in-out;
-}
-
-@keyframes scaleUp {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-.friend-photo {
-    width: 200px;
-    border-radius: 15px;
-    border: 4px solid #ff00ff; /* Kita tebalin dikit biar makin kelihatan */
-    
-    /* Panggil animasi bernama 'borderGlow', durasi 6 detik, muter selamanya */
-    animation: borderGlow 6s linear infinite; 
-}
-/* Efek Bingkai Muter Warna (Pink, Putih, Biru) langsung di Fotonya */
-.friend-photo {
-    width: 220px;
-    height: auto;
-    border-radius: 15px;
-    
-    /* Membuat border transparan sebagai wadah warna */
-    border: 5px solid transparent; 
-    
-    /* Memasukkan gradasi warna pink, putih, biru, ke pink lagi */
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                      linear-gradient(135deg, #ff00ff, #ffffff, #00ffff, #ff00ff);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    
-    /* Efek animasi memutar warna gradasi */
-    background-size: 100% 100%, 300% 300%;
-    animation: moveBorder 4s linear infinite;
-    
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-}
-
-/* Animasi untuk menggeser/memutar arah warna gradasi di bingkai */
-@keyframes moveBorder {
-    0% { background-position: 0% 0%, 0% 0%; }
-    50% { background-position: 0% 0%, 100% 100%; }
-    100% { background-position: 0% 0%, 0% 0%; }
-}
-
-/* Gaya Teks Sweet 15 yang ikut muncul di bawah */
-.sweet-15 {
-    color: #ffffff;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-    font-size: 1.4rem;
-    margin-top: 15px;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Memastikan area foto dan ucapan tersembunyi dengan benar di awal */
+/* --- AREA FOTO & BINGKAI MUTER --- */
 .hidden-photo {
     display: none;
     margin-top: 25px;
@@ -141,73 +120,60 @@ body {
     to { transform: scale(1); opacity: 1; }
 }
 
-.h{color:white;
-text-shadow:0 0 5px white;}
-.hidden { display: none; }
+.border-box {
+    display: inline-block;
+    border-radius: 15px;
+    border: 5px solid transparent; 
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                      linear-gradient(135deg, #ff00ff, #ffffff, #00ffff, #ff00ff);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-size: 100% 100%, 300% 300%;
+    animation: moveBorder 4s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    margin-bottom: 15px;
+}
 
-/* Kontainer hujan hati */
+.friend-photo {
+    width: 220px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+@keyframes moveBorder {
+    0% { background-position: 0% 0%, 0% 0%; }
+    50% { background-position: 0% 0%, 100% 100%; }
+    100% { background-position: 0% 0%, 0% 0%; }
+}
+
+/* --- TEKS & ELEMEN LAIN --- */
+.sweet-15 {
+    color: #ffffff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    font-size: 1.4rem;
+    margin-top: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.h {
+    color: white;
+    text-shadow: 0 0 5px white;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+/* --- KONTAINER EFEK HUJAN --- */
 #heart-rain-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Biar nggak ngehalangi tombol pas diklik */
+    pointer-events: none;
     z-index: 0;
 }
 
-/* Gaya setiap butiran hati */
 .falling-heart {
-    position: absolute;
-    color: #ff69b4; /* Pink lembut */
-    text-shadow: 0 0 5px #ff1493; /* Efek neon pink */
-    user-select: none;
-    font-size: 1.5rem;
-    animation: fall linear infinite;
-}
-
-/* Animasi jatuh ke bawah */
-@keyframes fall {
-    0% {
-        transform: translateY(-10vh) translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(110vh) translateX(20px);
-        opacity: 0;
-    }
-}
-/* Gaya untuk bintang yang jatuh */
-.falling-star {
-    position: absolute;
-    color: #ffffff; /* Putih */
-    text-shadow: 0 0 8px #ffffff, 0 0 15px #ffffff; /* Glow Putih */
-    user-select: none;
-    font-size: 1.2rem;
-    animation: fall linear infinite;
-}
-/* Kode pemaksa biar HP mau nge-scroll ke bawah */
-html, body {
-    overflow-y: auto !important;
-    height: auto !important;
-}
-/* Maksa kotak kontennya biar bisa memanjang ke bawah dan di-scroll */
-#main-content, .card {
-    height: auto !important;
-    max-height: none !important;
-    overflow-y: visible !important;
-}
-
-/* Bikin konten mulai dari atas biar teks judul gak kepotong ke atas */
-#main-content {
-    display: block !important;
-    padding-top: 20px !important;
-    padding-bottom: 40px !important;
-}
-
-.card {
-    margin: 0 auto !important;
-    position: relative !important;
-    top: 0 !important;
-    transform: none !important;
-}
