@@ -191,3 +191,10 @@ html, body {
     overflow-y: auto !important;
     height: auto !important;
 }
+/* Maksa kotak kontennya biar bisa memanjang ke bawah dan di-scroll */
+#main-content, .card {
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+}
+
